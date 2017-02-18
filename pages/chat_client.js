@@ -1,3 +1,5 @@
+var base_dir = window.location.pathname.split("/").slice(0,-1).join("/");
+
 // jQuery plugin to prevent double submission of forms
 jQuery.fn.preventDoubleSubmission = function() {
   $(this).on('submit',function(e){
@@ -22,7 +24,7 @@ function isScrolledToBottom(){ var h = scrollHeight(); return $("body")[0].scrol
 function scrollToBottom(){ $("body")[0].scrollTop = scrollHeight() }
 
 // message listing
-function listMessages(scrollFlag){ $("#message_log").load("/?location=/chat/list", function(){ if(scrollFlag) scrollToBottom() } ) }
+function listMessages(scrollFlag){ $("#message_log").load(base_dir+"/?location=/chat/list", function(){ if(scrollFlag) scrollToBottom() } ) }
 function periodicallyListMessagesCallback(){ var scrollFlag = isScrolledToBottom(); listMessages(scrollFlag) }
 
 // on ready
@@ -42,7 +44,7 @@ $(function(){
 		input.prop("disabled", true) // disable input on submit
 
 		// send
-		$.post("/?location=/chat/send", serialized_form) // send message
+		$.post(base_dir+"/?location=/chat/send", serialized_form) // send message
 		.done(function(){ 
 			input.val("")
 		})
