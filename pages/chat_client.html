@@ -1,0 +1,26 @@
+<!doctype html>
+<html><head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+<script src="chat_client.js"></script>
+<style type="text/css">
+#send_message_form {
+  position: fixed;
+  z-index: 100; 
+  bottom: 0; 
+  left: 0;
+  width: 100%;
+  background-color: white;
+}
+#message_log{
+  padding-bottom: 50px;
+}
+</style>
+<meta charset="utf-8">
+<title></title>
+</head><body>
+<div id="message_log"></div>
+<form id="send_message_form" action="" method="post">
+Sender: <input type="text" name="sender" value="sender"><br>
+Message: <input type="text" name="message_text" autofocus="on" autocomplete="off">
+<input type="submit" value="Submit"></form>
+</body></html>
