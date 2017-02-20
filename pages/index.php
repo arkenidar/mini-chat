@@ -1,7 +1,6 @@
 <?php
 
 $location=@$_REQUEST['location'];
-if($location=='')$location='/';
 
 function pdo_sqlite(){
 	$db_url="sqlite:../db.sqlite";
@@ -24,15 +23,18 @@ function pdo(){
 		return pdo_postgres();
 }
 
-if($location=='/'){
+$location = explode("/", $location);
+if($location==['']){
 	
 	header("Location: chat_client.html");
 
-}elseif($location=='/util/phpinfo'){
+}elseif($location==['util','phpinfo']){
 
 	phpinfo();
 	
-}elseif($location=='/chat/setup'){
+}elseif($location[0]=='chat'){
+	$location=$location[1];
+	if($location=='setup'){
 
     $pdo = pdo();
 
@@ -54,7 +56,7 @@ if($location=='/'){
     
     echo "chat_messages table is setup";
     
-}elseif($location=='/chat/list'){
+	}elseif($location=='list'){
 
 	$pdo = pdo();
     
@@ -71,7 +73,7 @@ if($location=='/'){
     
     echo $output;
     
-}elseif($location=='/chat/send'){
+	}elseif($location=='send'){
 
     $pdo = pdo();
     
@@ -80,4 +82,5 @@ if($location=='/'){
     $sql = "INSERT INTO chat_messages (message_text, sender) VALUES ($text, $sender)";
     $pdo->query($sql); // insert new message
     
- }
+	}
+}
