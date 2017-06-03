@@ -20,8 +20,8 @@ jQuery.fn.preventDoubleSubmission = function() {
 
 // chat scrolling
 function scrollHeight(){ return $(document).height()-$(window).height() }
-function isScrolledToBottom(){ var h = scrollHeight(); return $("body")[0].scrollTop==h }
-function scrollToBottom(){ $("body")[0].scrollTop = scrollHeight() }
+function isScrolledToBottom(){ return $('html')[0].scrollTop == scrollHeight() }
+function scrollToBottom(){ $('html')[0].scrollTop = scrollHeight() }
 
 // message listing
 function listMessages(scrollFlag){ $("#message_log").load(base_dir+"/?location=chat/list", function(){ if(scrollFlag) scrollToBottom() } ) }
@@ -29,7 +29,7 @@ function periodicallyListMessagesCallback(){ var scrollFlag = isScrolledToBottom
 
 // on ready
 $(function(){
-	
+
 	// stay updated
 	setInterval(periodicallyListMessagesCallback, 1000) // get messages periodically
 
@@ -45,7 +45,7 @@ $(function(){
 
 		// send
 		$.post(base_dir+"/?location=chat/send", serialized_form) // send message
-		.done(function(){ 
+		.done(function(){
 			input.val("")
 		})
 		.fail(function(){ // error handling
@@ -57,4 +57,4 @@ $(function(){
 		})
 		return false
 	})
-}) 
+})
