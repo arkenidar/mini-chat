@@ -13,7 +13,7 @@ function pdo_postgres(){
 }
 
 function db_type(){
-	$db_type="postgres";
+	$db_type="sqlite"; // DB types supported: sqlite, postgres
 	return $db_type;
 }
 function pdo(){
