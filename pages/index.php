@@ -3,7 +3,7 @@
 // - PDO
 
 // supported DB types: 'sqlite', 'postgres', 'mysql'
-define('pdo_db_type', 'mysql');
+define('pdo_db_type', 'sqlite');
 
 function pdo(){
 
@@ -104,5 +104,8 @@ case '/util/db_setup':
 // http://localhost:88/?location=/util/phpinfo
 case '/util/phpinfo':
 	phpinfo();
+	break;
+default:
+	echo 'location not handled !';
 	break;
 }
