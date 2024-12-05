@@ -1,1 +1,1 @@
-sudo php -S localhost:88 -t pages
+php -S localhost:8080 -t pages
