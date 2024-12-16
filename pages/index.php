@@ -106,7 +106,10 @@ switch ((string) @$_REQUEST['location']) {
 
 		// http://localhost:88/?location=/util/phpinfo
 	case '/util/phpinfo':
-		phpinfo();
+		// de-activated for security reasons 
+		// ( use only for safe debugging ,
+		// it may expose wrong people to sensitive information )
+		///phpinfo();
 		break;
 	default:
 		echo 'location not handled !';
